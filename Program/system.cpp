@@ -2,7 +2,6 @@
 using namespace std;
 
 int main()
-
 {
 	string cho;
         ch1:
@@ -21,6 +20,5 @@ int main()
 		cout << "Wrong choice try again" << endl;
 		goto ch1;
 	}
-
 	return 0;
 }
