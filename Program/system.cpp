@@ -5,7 +5,7 @@ int main()
 {
 	string cho;
         ch1:
-	cout << "Chose between (L/l) = login , (R/r) = register";
+	cout << "Please chose between (L/l) = login , (R/r) = register";
 	cin >> cho;
 	if(cho == "L" || cho == "l")
 	{
