@@ -5,18 +5,26 @@ using namespace std;
 
 void usr_register()
 {
-	ofstream file_of_register;
-	file_of_register.open("register.txt");
+	unsigned int numos;
 	string name,age,number;
-	cout << "please enter your name: ";
-	cin >> name;
-	file_of_register << name <<endl;
-	cout << "please enter your age: ";
-	cin >> age;
-	file_of_register << age  <<endl;
-	cout << "please enter your number: ";
-	cin >> number;
-	file_of_register << number<<endl;
+	ofstream file_of_register;
+	file_of_register.open("register.txt", ios_base::app);
+	cout << "Enter number of students you want to add: ";
+	cin >> numos;
+	cout << endl;
+	for (int i = 0; i < numos; i++)
+	{
+		cout << "please enter your name: ";
+        	cin >> name;
+        	file_of_register << name << "\t";
+        	cout << "please enter your age: ";
+        	cin >> age;
+        	file_of_register << age  << "\t";
+        	cout << "please enter your number: ";
+        	cin >> number;
+        	file_of_register << number<< "\t\n";
+	}
+	file_of_register.close();
 }
 
 void login()
@@ -28,7 +36,8 @@ int main()
 {
 	string cho;
         ch1:
-	cout << "Please chose between (L/l) = login , (R/r) = register\n";
+	cout << "Please chose between (L/l) = login OR (R/r) = register\n";
+
 	cin >> cho;
 	if(cho == "L" || cho == "l")
 	{
