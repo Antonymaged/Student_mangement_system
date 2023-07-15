@@ -34,16 +34,16 @@ cout << "Hi" << endl;
 
 int main()
 {
-	string cho;
+	string cho1,cho2;
         ch1:
 	cout << "Please chose between (L/l) = login OR (R/r) = register\n";
 
-	cin >> cho;
-	if(cho == "L" || cho == "l")
+	cin >> cho1;
+	if(cho1 == "L" || cho1 == "l")
 	{
 		login();
 	}
-	else if(cho == "R" || cho == "r")
+	else if(cho1 == "R" || cho1 == "r")
 	{
 		usr_register();
 	}
@@ -51,6 +51,22 @@ int main()
 	{
 		cout << "Wrong choice try again" << endl;
 		goto ch1;
+	}
+  	ch2:
+	cout << "Do you want to do any another process(Y/N): ";
+	cin >> cho2;
+	if (cho2 == "Y" || cho2 == "y")
+	{
+		goto ch1;
+	}
+	else if (cho2 == "N" || cho2 == "n")
+	{
+		cout << "Thanx for using my program :)" <<endl;
+	}
+	else
+	{
+		cout <<"Can't understand your choice try again"<<endl;
+		goto ch2;
 	}
 	return 0;
 }
