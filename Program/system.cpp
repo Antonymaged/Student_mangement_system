@@ -30,25 +30,51 @@ void usr_register()
 	file_of_register.close();
 }
 
-void login()
+bool login()
 {
-    string username, password;
-    cout << "Enter your username: ";
-    cin >> username;
-    cout << "Enter your password: ";
-    cin >> password;
-    ifstream file_of_login;
-    file_of_login.open("register.txt", ios_base::in);
-    string temp_username, temp_password;
-    while (file_of_login >> temp_username >> temp_password)
+    int ch;
+    ifstream file;
+    string n, pass, line;
+    bool found = false;
+    file.open("register.txt");
+    if (!file)
     {
-        if (temp_username == username && temp_password == password)
+        cerr << "Unable to open file. Please register first." << endl;
+        return false;
+    }
+
+    cout << "Please enter your username: ";
+    cin >> n;
+    cout << "Please enter your password: ";
+    cin >> pass;
+
+    while (getline(file, line))
+    {
+        if (line.find(n) != string::npos && line.find(pass) != string::npos)
         {
-            cout << "Login successful!";
-            return;
+            found = true;
+            break;
         }
     }
-    cout << "Login failed!";
+
+    file.close();
+
+    if (found)
+    {
+        cout << "\t\t\t\t\t\tLogin successful." << endl;
+         ch:
+         cout << "1) chose cources."<<endl
+         << "2) gpa calc." << endl
+         << "3) edit profile"<<endl
+         << "4) show cources"<<endl
+         << "5) Log out"<<endl;
+        return true;
+    }
+    else
+    {
+        cout << "\t\t\t\t\t\tIncorrect username or password." << endl;
+        return false;
+    }
 }
 
 int main()
