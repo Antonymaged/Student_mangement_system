@@ -6,7 +6,7 @@ using namespace std;
 void usr_register()
 {
 	unsigned int numos;
-	string name,age,number;
+	string name,age,number,password;
 	ofstream file_of_register;
 	file_of_register.open("register.txt", ios_base::app);
 	cout << "Enter number of students you want to add: ";
@@ -22,14 +22,33 @@ void usr_register()
         	file_of_register << age  << "\t";
         	cout << "please enter your number: ";
         	cin >> number;
-        	file_of_register << number<< "\t\n";
+        	file_of_register << number<< "\t";
+		cout << "please enter a strong password: ";
+		cin >> password;
+		file_of_register << password<< "\t\n";
 	}
 	file_of_register.close();
 }
 
 void login()
 {
-cout << "Hi" << endl;
+    string username, password;
+    cout << "Enter your username: ";
+    cin >> username;
+    cout << "Enter your password: ";
+    cin >> password;
+    ifstream file_of_login;
+    file_of_login.open("register.txt", ios_base::in);
+    string temp_username, temp_password;
+    while (file_of_login >> temp_username >> temp_password)
+    {
+        if (temp_username == username && temp_password == password)
+        {
+            cout << "Login successful!";
+            return;
+        }
+    }
+    cout << "Login failed!";
 }
 
 int main()
