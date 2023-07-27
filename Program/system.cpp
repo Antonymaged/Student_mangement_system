@@ -3,6 +3,9 @@
 
 using namespace std;
 
+void chose_cources()
+{
+}
 void usr_register()
 {
 	unsigned int numos;
