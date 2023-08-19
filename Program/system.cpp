@@ -3,8 +3,134 @@
 
 using namespace std;
 
-void chose_cources()
+void chose_cources(string name)
 {
+	ofstream cource;
+	int year, numoc, course;
+	char term;
+	cource.open("/home/vagrant/Student_mangement_system/Program/data_base/"+name+".txt");
+	cout <<"which year are you in: ";
+	cin >> year;
+	switch (year)
+	{
+		case 1:
+			term:
+			cout <<"which term are you in: ";
+			cin >> term;
+			switch (term)
+			{
+				case 'f':
+					numoc:
+					cout <<"how meny courses do you want to study";
+					cin >> numoc;
+					if (numoc < 1 || numoc > 7)
+					{
+						cout <<"Wrong number of cources";
+						goto numoc;
+					}
+					else
+					{
+						cout << "chose between\n";
+						cout << "1. BS 111 English Language I\n";
+						cout <<	"2. BS 141 Physics for Scientists and Engineer\n";
+						cout <<	"3. BS 151 Linear Algebra I\n";
+						cout <<	"4. BS 153 Mathematical Analysis I\n";
+						cout <<	"5. CS 111 Introduction to Computer Science\n";
+						cout <<	"6. CS 112 Introduction to Programming-2022\n";
+						for (int i = 0; i < numoc ; i++)
+						{
+							chose:
+							cin >> course;
+							switch (course)
+							{
+								case 1:
+								cource << "BS 111 English Language I.\n";
+								break;
+								case 2:
+								cource << "BS 141 Physics for Scientists and Engineer.\n";
+								break;
+								case 3:
+								cource << "BS 151 Linear Algebra I.\n";
+								break;
+								case 4:
+								cource << "BS 153 Mathematical Analysis I.\n";
+								break;
+								case 5:
+								cource << "CS 111 Introduction to Computer Science.\n";
+								break;
+								case 6:
+								cource << "CS 112 Introduction to Programming-2022.\n";
+								break;
+								default:
+								cout << "year 1 first tearm have only 6 cources try again\n";
+								goto chose;
+								break;
+							}
+						}
+					}
+				break;
+				case 's':
+					numoc2:
+                                        cout <<"how meny courses do you want to study";
+                                        cin >> numoc;
+                                        if (numoc < 1 || numoc > 7)
+                                        {
+                                                cout <<"Wrong number of cources";
+                                                goto numoc2;
+                                        }
+                                        else
+                                        {
+                                                cout << "chose between\n";
+                                                cout << "1. BS 111 Engish Language II\n";
+                                                cout << "2. BS 141 Applied electronics\n";
+                                                cout << "3. BS 151 Linear Algebra II\n";
+                                                cout << "4. BS 153 Mathematical Analysis II\n";
+                                                cout << "5. CS 111 Introduction to Computer Skills\n";
+                                                cout << "6. CS 112 Structured programing";
+                                                for (int i = 0; i < numoc ; i++)
+                                                {
+                                                        chose1:
+                                                        cin >> course;
+                                                        switch (course)
+                                                        {
+                                                                case 1:
+                                                                cource << "BS 111 English Language II.\n";
+                                                                break;
+                                                                case 2:
+                                                                cource << "BS 141 Applied electronics.\n";
+                                                                break;
+                                                                case 3:
+                                                                cource << "BS 151 Linear Algebra II.\n";
+                                                                break;
+                                                                case 4:
+                                                                cource << "BS 153 Mathematical Analysis II.\n";
+								break;
+								case 5:
+								cource << "CS 111 Introduction to Computer Skills.\n";
+								break;
+								case 6:
+								cource << "CS 112 Structured programing\n";
+								break;
+								default:
+								cout << "First year second tearm have only 6 subjects try agin\n";
+								goto chose1;
+								break;
+							}
+						}
+					}
+				break;
+				default:
+				cout << "there is two terms in the year try again\n";
+				goto term;
+				break;
+			}
+		case 2:
+			
+		break;
+		default:
+
+		break;
+	}
 }
 void usr_register()
 {
@@ -71,6 +197,18 @@ bool login()
          << "3) edit profile"<<endl
          << "4) show cources"<<endl
          << "5) Log out"<<endl;
+	 cout << "chose in numbers here: ";
+	cin >> ch;
+	switch(ch)
+	{
+		case 1:
+			chose_cources(n);
+		break;
+		default:
+		cout << "Wrong choice chose again"<<endl;
+		goto ch;
+		break;
+	}
         return true;
     }
     else
