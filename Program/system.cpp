@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 
 using namespace std;
 
@@ -9,6 +10,7 @@ void chose_cources(string name)
 	int year, numoc, course;
 	char term;
 	cource.open("/home/vagrant/Student_mangement_system/Program/data_base/"+name+".txt");
+	year:
 	cout <<"which year are you in: ";
 	cin >> year;
 	switch (year)
@@ -20,13 +22,13 @@ void chose_cources(string name)
 			switch (term)
 			{
 				case 'f':
-					numoc:
+					numoc11:
 					cout <<"how meny courses do you want to study";
 					cin >> numoc;
-					if (numoc < 1 || numoc > 7)
+					if (numoc < 1 || numoc > 6)
 					{
-						cout <<"Wrong number of cources";
-						goto numoc;
+						cout <<"Wrong number of cources try again\n";
+						goto numoc11;
 					}
 					else
 					{
@@ -70,13 +72,13 @@ void chose_cources(string name)
 					}
 				break;
 				case 's':
-					numoc2:
-                                        cout <<"how meny courses do you want to study";
+					numoc12:
+                                        cout <<"how meny courses do you want to study: ";
                                         cin >> numoc;
-                                        if (numoc < 1 || numoc > 7)
+                                        if (numoc < 1 || numoc > 6)
                                         {
                                                 cout <<"Wrong number of cources";
-                                                goto numoc2;
+                                                goto numoc12;
                                         }
                                         else
                                         {
@@ -86,7 +88,7 @@ void chose_cources(string name)
                                                 cout << "3. BS 151 Linear Algebra II\n";
                                                 cout << "4. BS 153 Mathematical Analysis II\n";
                                                 cout << "5. CS 111 Introduction to Computer Skills\n";
-                                                cout << "6. CS 112 Structured programing";
+                                                cout << "6. CS 112 Structured programing\n";
                                                 for (int i = 0; i < numoc ; i++)
                                                 {
                                                         chose1:
@@ -125,13 +127,129 @@ void chose_cources(string name)
 				break;
 			}
 		case 2:
-			
+			term1:
+			cout << "which term are you in: ";
+			cin >> term;
+			switch(term)
+			{
+				case 'f':
+					numoc21:
+					cout << "how many courses do you want to study: ";
+					cin >> numoc;
+					if (numoc > 6 || numoc < 1)
+					{
+						cout << "worng number of courses try again\n";
+						goto numoc21;
+					}
+					else
+					{
+						cout << "chose between\n";
+						cout << "1. physics\n";
+						cout << "2. introduction to information system\n";
+						cout << "3. introduction to computing\n";
+						cout << "4. ESP I\n";
+						cout << "5. creativity & enovation\n";
+						cout << "6. fundementals of busnis\n";
+						for (int i = 0; i < numoc; i++)
+						{
+							cource1:
+							cin >> course;
+							switch(course)
+							{
+								case 1:
+								cource << "Physics\n";
+								break;
+								case 2:
+								cource << "introduction to information system\n";
+								break;
+								case 3:
+								cource << "introduction to computing\n";
+								break;
+								case 4:
+								cource << "ESP I\n";
+								break;
+								case 5:
+								cource << "creativity & enovation\n";
+								break;
+								case 6:
+								cource << "fundementals of busnis\n";
+								break;
+								default:
+								cout << "Second year first tearm have only 6 subjects trya again\n";
+								goto cource1;
+								break;
+							}
+						}
+					}
+				break;
+				case 's':
+				numoc22:
+                                        cout << "how many courses do you want to study: ";
+                                        cin >> numoc;
+                                        if (numoc > 6 || numoc < 1)
+                                        {
+                                                cout << "worng number of courses try again\n";
+                                                goto numoc22;
+                                        }
+                                        else
+                                        {
+                                                cout << "chose between\n";
+                                                cout << "1. physics\n";
+                                                cout << "2. introduction to information system\n";
+                                                cout << "3. introduction to computing\n";
+                                                cout << "4. ESP I\n";
+                                                cout << "5. creativity & enovation\n";
+                                                cout << "6. fundementals of busnis\n";
+                                                for (int i = 0; i < numoc; i++)
+                                                {
+                                                        cource2:
+                                                        cin >> course;
+                                                        switch(course)
+                                                        {
+                                                                case 1:
+                                                                cource << "Physics\n";
+                                                                break;
+                                                                case 2:
+                                                                cource << "introduction to information system\n";
+                                                                break;
+                                                                case 3:
+                                                                cource << "introduction to computing\n";
+                                                                break;
+                                                                case 4:
+                                                                cource << "ESP I\n";
+                                                                break;
+                                                                case 5:
+                                                                cource << "creativity & enovation\n";
+                                                                break;
+                                                                case 6:
+                                                                cource << "fundementals of busnis\n";
+                                                                break;
+                                                                default:
+                                                                cout << "Second year first tearm have only 6 subjects trya again\n";
+                                                                goto cource2;
+                                                                break;
+							}
+						}
+					}
+				break;
+				default:
+				cout << "second year have only two tearms try again\n";
+				goto term1;
+				break;
+			}
 		break;
 		default:
-
+		cout << "sorry our program have only 2 years to chose between wait for the next update.\n";
+		goto year;
 		break;
 	}
 }
+
+void gpa_calc()
+{
+
+}
+
 void usr_register()
 {
 	unsigned int numos;
@@ -204,6 +322,9 @@ bool login()
 		case 1:
 			chose_cources(n);
 		break;
+		case 2:
+			gpa_calc();
+		break;
 		default:
 		cout << "Wrong choice chose again"<<endl;
 		goto ch;
@@ -222,8 +343,8 @@ int main()
 {
 	string cho1,cho2;
         ch1:
-	cout << "Please chose between (L/l) = login OR (R/r) = register\n";
-
+	cout << "Please chose between\n(L/l) = login\n(R/r) = register\n(E/e) = exit\n";
+	cout << "chose here :";
 	cin >> cho1;
 	if(cho1 == "L" || cho1 == "l")
 	{
@@ -232,6 +353,10 @@ int main()
 	else if(cho1 == "R" || cho1 == "r")
 	{
 		usr_register();
+	}
+	else if(cho1 == "E" || cho1 == "e")
+	{
+		goto thx;
 	}
 	else
 	{
@@ -247,6 +372,7 @@ int main()
 	}
 	else if (cho2 == "N" || cho2 == "n")
 	{
+		thx:
 		cout << "Thanx for using my program :)" <<endl;
 	}
 	else
