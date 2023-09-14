@@ -9,7 +9,7 @@ void chose_cources(string name)
 	ofstream cource;
 	int year, numoc, course;
 	char term;
-	cource.open("/home/vagrant/Student_mangement_system/Program/data_base/"+name+".txt");
+	cource.open("./data_base/"+name+".txt");
 	year:
 	cout <<"which year are you in: ";
 	cin >> year;
@@ -126,6 +126,7 @@ void chose_cources(string name)
 				goto term;
 				break;
 			}
+		break;
 		case 2:
 			term1:
 			cout << "which term are you in: ";
@@ -245,9 +246,100 @@ void chose_cources(string name)
 	}
 }
 
-void gpa_calc()
+void gpa_calc(string name)
 {
+    float gpa, gp, dgree, tgp = 0, tch = 0, count = 0, hour;
+    string grade,n;
+    ifstream stu_file;
+    stu_file.open("./data_base/" + name + ".txt");
+    if (!stu_file.is_open())
+    {
+        cout << "Unable to open file." << endl;
+        return;
+    }
+    while (getline(stu_file, n))
+    {
+        count++;
+    }
+    stu_file.close();
 
+    for (int i = 0; i < count; i++)
+    {
+    wrongg:
+        cout << "Please enter your grade: ";
+        cin >> grade;
+        if (grade == "A+" || grade == "a+" || grade == "A" || grade == "a")
+        {
+            dgree = 4.0;
+        }
+        else if (grade == "A-" || grade == "a-")
+        {
+            dgree = 3.7;
+        }
+        else if (grade == "B+" || grade == "b+")
+        {
+            dgree = 3.3;
+        }
+        else if (grade == "B" || grade == "b")
+        {
+            dgree = 3.0;
+        }
+        else if (grade == "B-" || grade == "b-")
+        {
+            dgree = 2.7;
+        }
+        else if (grade == "C+" || grade == "c+")
+        {
+            dgree = 2.3;
+        }
+        else if (grade == "C" || grade == "c")
+        {
+            dgree = 2.0;
+        }
+        else if (grade == "C-" || grade == "c-")
+        {
+            dgree = 1.7;
+        }
+        else if (grade == "D+" || grade == "d+")
+        {
+            dgree = 1.3;
+        }
+        else if (grade == "D" || grade == "d")
+        {
+            dgree = 1.0;
+        }
+        else if (grade == "D-" || grade == "d-")
+        {
+            dgree = 0.7;
+        }
+        else if (grade == "F" || grade == "f")
+        {
+            dgree = 0.0;
+        }
+        else
+        {
+            cout << "Wrong choice. Try again." << endl;
+            goto wrongg;
+        }
+    time:
+        cout << "Please enter the number of hours: ";
+        cin >> hour;
+        if (hour >= 3 && hour <= 10)
+        {
+            gp = hour * dgree;
+            tgp += gp;
+            tch += hour;
+        }
+        else
+        {
+            cout << "Invalid number of study hours." << endl;
+            goto time;
+        }
+    }
+    gpa = tgp / tch;
+    cout << "Your total hours: " << tch << endl;
+    cout << "Your total grade points: " << tgp << endl;
+    cout << "Your GPA: " << gpa << endl;
 }
 
 void usr_register()
@@ -323,7 +415,9 @@ bool login()
 			chose_cources(n);
 		break;
 		case 2:
-			gpa_calc();
+			gpa_calc(n);
+		break;
+		case 4:
 		break;
 		default:
 		cout << "Wrong choice chose again"<<endl;

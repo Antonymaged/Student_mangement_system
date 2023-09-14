@@ -1,5 +1,5 @@
-Physics
-creativity & enovation
-fundementals of busnis
-introduction to computing
-introduction to information system
+BS 111 English Language I.
+BS 141 Physics for Scientists and Engineer.
+BS 151 Linear Algebra I.
+BS 153 Mathematical Analysis I.
+CS 111 Introduction to Computer Science.
